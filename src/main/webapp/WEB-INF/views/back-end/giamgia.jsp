@@ -1,0 +1,297 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+
+<!-- SPRING FORM -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!--
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+<script src="${pageContext.request.contextPath}/js/Jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/shop.js"></script>
+<div class="content">
+<header>Thêm Sản phẩm</header>
+<sf:form action="${pageContext.request.contextPath}/admin" method="post" modelAttribute="admin1">
+    <div class="ma" >
+    Mã sản phẩm: <sf:input type="text" path="maSP" />
+    </div>
+    <div class="ten">
+    Tên sản phẩm <sf:input type="text" path="tenSP"/>
+    </div>
+    <div class="gia">
+    Gía sản phẩm <sf:input type="text" path="price"/>
+    </div>
+    <input type="submit" id="login1" value="Thêm"/>
+</sf:form>
+</div> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>Đăng kí tài khoản</title>
+    <meta name="description" content="overview &amp; stats" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/fonts/fonts.googleapis.com.css" />
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/fonts/fonts.googleapis.com.css" />
+    <link
+            href="${pageContext.request.contextPath}/summernote/summernote.min.css"
+            rel="stylesheet" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+        .main-container{
+            display: flex;
+
+        }
+    </style>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/css/ace.min.css"
+          class="ace-main-stylesheet" id="main-ace-style" />
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/css/acss.css" />
+    <script
+            src="${pageContext.request.contextPath}/assets/js/ace-extra.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/shop.js"></script>
+
+</head>
+
+<body class="no-skin">
+<!-- header -->
+
+<jsp:include page="/WEB-INF/views/back-end/common/header.jsp"></jsp:include>
+
+<div class="main-container" id="main-container">
+
+    <div id="sidebar" class="sidebar                  responsive">
+
+
+        <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+            <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                <button class="btn btn-success">
+                    <i class="ace-icon fa fa-signal"></i>
+                </button>
+
+                <button class="btn btn-info">
+                    <i class="ace-icon fa fa-pencil"></i>
+                </button>
+
+                <button class="btn btn-warning">
+                    <i class="ace-icon fa fa-users"></i>
+                </button>
+
+                <button class="btn btn-danger">
+                    <i class="ace-icon fa fa-cogs"></i>
+                </button>
+            </div>
+
+            <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                <span class="btn btn-success"></span> <span class="btn btn-info"></span>
+
+                <span class="btn btn-warning"></span> <span class="btn btn-danger"></span>
+            </div>
+        </div>
+        <!-- /.sidebar-shortcuts -->
+
+        <ul class="nav nav-list">
+
+
+            <%--				// quan li bai viet--%>
+            <li class=""><a href="#" class="dropdown-toggle"> <i
+                    class="menu-icon fa fa-list"></i> <span class="menu-text">
+							Quản lí sales </span> <b class="arrow fa fa-angle-down"></b>
+            </a> <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class=""><a href="tables.html"> <i
+                            class="menu-icon fa fa-caret-right"></i> Thông tin sản phẩm sale
+                    </a> <b class="arrow"></b></li>
+
+                    <li class=""><a href="${pageContext.request.contextPath}/admin/giamgia"> <i
+                            class="menu-icon fa fa-caret-right"></i> Thêm sản phẩm sale
+                    </a> <b class="arrow"></b></li>
+                </ul></li>
+
+
+            <%--				// quan li tai khoan--%>
+            <li class=""><a href="#" class="dropdown-toggle"> <span
+                    class="glyphicon glyphicon-user" style="margin-left: 5px;"></span>
+                <span class="menu-text"> Tài khoản </span> <b
+                        class="arrow fa fa-angle-down"></b>
+            </a> <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class=""><a href="${pageContext.request.contextPath}/admin/register"> <i
+                            class="menu-icon fa fa-caret-right"></i> Đăng kí tài khoản
+                    </a> <b class="arrow"></b></li>
+
+                    <li class=""><a href="${pageContext.request.contextPath}/admin/info-users"> <i
+                            class="menu-icon fa fa-caret-right"></i> Danh sách User
+                    </a> <b class="arrow"></b></li>
+                </ul></li>
+
+            <li class=""><a href="#" class="dropdown-toggle"> <i
+                    class="menu-icon fa fa-pencil-square-o"></i> <span
+                    class="menu-text"> Sản phẩm </span> <b
+                    class="arrow fa fa-angle-down"></b>
+            </a> <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class=""><a href="${pageContext.request.contextPath}/admin/themsanpham/list"> <i
+                            class="menu-icon fa fa-caret-right"></i> Danh sách sản phẩm
+                    </a> <b class="arrow"></b></li>
+
+                    <li class=""><a href="${pageContext.request.contextPath}/admin/themsanpham"> <i
+                            class="menu-icon fa fa-caret-right"></i> Thêm sản phẩm
+                    </a> <b class="arrow"></b></li>
+
+                </ul></li>
+            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                <i class="ace-icon fa fa-angle-double-left"
+                   data-icon1="ace-icon fa fa-angle-double-left"
+                   data-icon2="ace-icon fa fa-angle-double-right"></i>
+            </div>
+
+            <script type="text/javascript">
+                try {
+                    ace.settings.check('sidebar', 'collapsed')
+                } catch (e) {
+                }
+            </script>
+    </div>
+
+    <div class="row"
+         style="width: 1100px; margin-left: 20px; margin-top: 10px;">
+        <h1 align="center">Danh sách tài khoản</h1>
+        ${ messsage }
+        <table id="table-sanpham" class="table">
+            <thead>
+            <tr>
+                <td><b>Mã sản phẩm</b></td>
+                <td><b>Tên sản phẩm</b></td>
+                <td><b>Giá gốc</b></td>
+                <td><b>Giá bán</b></td>
+                <td><b>Ngày tạo</b></td>
+                <td>Sale(%)</td>
+                <td><b>Action</b></td>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="product" items="${producte_sale}">
+                <tr>
+                    <td>${product.id }</td>
+                    <td>${product.title }</td>
+                    <td>${product.price }</td>
+                    <td>${product.priceSale }</td>
+                    <td>${product.createdDate }</td>
+                    <td>${product.countSale }</td>
+                    <td>
+<%--                        <a href="#login-box" class="btn btn-primary btn-sm">Sale</a></td>--%>
+                    <a class="login-window button" href="#login-box" class="btn btn-primary btn-sm" onclick="showModal(${product.id})">Sale</a></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="login" id="login-box">
+        <p align="center">Giảm Giá Sản Phẩm(%)</p>
+    <form:form class="login-content" action="${pageContext.request.contextPath}/admin/new/giamgia"
+               method="post" modelAttribute="saleDTO"
+               enctype="multipart/form-data">
+        <div class="form-group">
+            <label>ID :</label>
+            <form:input type="text" class="form-control" path="productId" id="txtId"/>
+        </div>
+        <div class="form-group">
+        <label>Tổng giảm giá :</label>
+        <form:input type="text" class="form-control" path="countSale"  />
+        </div>
+        <button class="button submit-button" type="submit">OK</button>
+    </form:form>
+</div>
+
+
+<script
+        src="${pageContext.request.contextPath}/assets/js/jquery.2.1.1.min.js"></script>
+<script
+        src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+<script
+        src="${pageContext.request.contextPath}/assets/js/jquery-ui.custom.min.js"></script>
+<script
+        src="${pageContext.request.contextPath}/assets/js/jquery.ui.touch-punch.min.js"></script>
+<script
+        src="${pageContext.request.contextPath}/assets/js/jquery.easypiechart.min.js"></script>
+<script
+        src="${pageContext.request.contextPath}/assets/js/jquery.sparkline.min.js"></script>
+<script
+        src="${pageContext.request.contextPath}/assets/js/jquery.flot.min.js"></script>
+<script
+        src="${pageContext.request.contextPath}/assets/js/jquery.flot.pie.min.js"></script>
+<script
+        src="${pageContext.request.contextPath}/assets/js/jquery.flot.resize.min.js"></script>
+<script
+        src="${pageContext.request.contextPath}/assets/js/ace-elements.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/ace.min.js"></script>
+<script
+        src="${pageContext.request.contextPath}/summernote/summernote.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#txtDetailDescription').summernote();
+    });
+
+    $(document).ready(function() {
+        $('a.login-window').click(function() {
+            //lấy giá trị thuộc tính href - chính là phần tử "#login-box"
+            var loginBox = $(this).attr('href');
+
+            //cho hiện hộp đăng nhập trong 300ms
+            $(loginBox).fadeIn(300);
+
+            // thêm phần tử id="over" vào sau body
+            $('body').append('<div id="over">');
+            $('#over').fadeIn(300);
+
+            return false;
+        });
+
+        $(document).ready(function() {
+            $('.submit-button').click(function() {
+                $('.login').fadeOut(300)
+                $('#over').remove();
+            });
+
+            return false;
+        });
+
+
+        // khi click đóng hộp thoại
+        $(document).on('click', "a.close, #over", function() {
+            $('#over, .login').fadeOut(300 , function() {
+                $('#over').remove();
+            });
+            return false;
+        });
+    });
+
+    function showModal(data) {
+        console.log(data);
+        $('#txtId').val(data);
+        // $('#login-box').show();
+    }
+</script>
+
+
+</body>
+</html>
